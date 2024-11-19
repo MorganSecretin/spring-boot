@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- mvn clean package -->
+<!-- java -cp .\target\spring-boot-0.1.jar ynov.App -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ynov</groupId>
+    <artifactId>spring-boot</artifactId>
+    <version>0.1</version>
+
+    <properties>
+        <!-- Définit l'encodage des sources -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Utilise Java 21 pour la compilation -->
+        <maven.compiler.release>21</maven.compiler.release>
+    </properties>
+
+    <!-- Définit le parent du projet, qui contient les configurations par défaut pour les plugins Maven -->
+    <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+    <dependencies>
+        <!-- Ajoute les composants nécessaires pour créer une application Web Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- JPA permet de gérer les entités et les relations entre elles -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+        <!-- DevTools permet de recharger automatiquement l'application lorsqu'un fichier est modifié -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+        <!-- Validation permet de valider les données des entités avant de les enregistrer en base -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+        <!-- H2 est une base de données en mémoire utilisée pour les tests -->
+        <dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+        <!-- Lombok permet de réduire le code boilerplate en générant automatiquement les getters, setters, constructeurs, etc. -->
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Permet de packager l'application Spring Boot en un fichier JAR exécutable -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- Configure le compilateur Maven pour utiliser les propriétés définies (comme Java
+            17) -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
