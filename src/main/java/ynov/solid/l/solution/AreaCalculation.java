@@ -2,14 +2,28 @@ package ynov.solid.l.solution;
 
 public class AreaCalculation {
     public static void main(String[] args) {
-        Rectangle rectangle = new Square();
+        Rectangle rectangle = new Rectangle();
         rectangle.setWidth(5);
         rectangle.setHeight(4);
-        System.out.println("Aire : " + rectangle.calculateArea());
+        System.out.println("Aire rectangle : " + rectangle.calculateArea());
+
+        Square square = new Square();
+        square.setSide(5);
+        System.out.println("Aire carré : " + square.calculateArea());
     }
 }
 
-class Rectangle {
+abstract class AShape {
+    abstract int calculateArea();
+
+    public boolean validDimension(int dimension) {
+        boolean isValid = dimension > 0;
+        if (!isValid) System.err.println("La dimension doit être supérieure à zéro");
+        return isValid;
+    }
+} 
+
+class Rectangle extends AShape {
     protected int width;
     protected int height;
 
@@ -23,26 +37,22 @@ class Rectangle {
         this.height = height;
     }
 
-    private boolean validDimension(int dimension) {
-        boolean isValid = dimension > 0;
-        if (!isValid) System.err.println("La dimension doit être supérieure à zéro");
-        return isValid;
-    }
-
     public int calculateArea() {
         return width * height;
     }
 }
 
-class Square extends Rectangle {
-    @Override
-    public void setHeight(int height) {
-        super.setWidth(height);
+class Square extends AShape {
+    protected int side;
+
+    public void setSide(int side) {
+        if (!validDimension(side)) return;
+        this.side = side;
     }
 
     @Override
     public int calculateArea() {
-        return width * width;
+        return side * side;
     }
 }
 
