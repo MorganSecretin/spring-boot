@@ -14,11 +14,19 @@ class Rectangle {
     protected int height;
 
     public void setWidth(int width) {
+        if (!validDimension(width)) return;
         this.width = width;
     }
 
     public void setHeight(int height) {
+        if (!validDimension(height)) return;
         this.height = height;
+    }
+
+    private boolean validDimension(int dimension) {
+        boolean isValid = dimension > 0;
+        if (!isValid) System.err.println("La dimension doit être supérieure à zéro");
+        return isValid;
     }
 
     public int calculateArea() {
@@ -27,11 +35,6 @@ class Rectangle {
 }
 
 class Square extends Rectangle {
-    @Override
-    public void setWidth(int width) {
-        super.setHeight(width);
-    }
-
     @Override
     public void setHeight(int height) {
         super.setWidth(height);
