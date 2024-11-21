@@ -1,13 +1,18 @@
 package ynov.designpattern.creational.factory;
 
 public class Warrior extends ACharacter {
-    public Warrior(String name) {
-        super(name, 100, 10, new String[]{"Sword", "Shield"});
+    public Warrior(String name, int health, int attack) {
+        super(name, health, attack);
     }
 
     @Override
     public void displayCharacter() {
         System.out.print("Warrior :");
         super.displayCharacter();
+    }
+
+    @Override
+    public void useSpecialSkills() {
+        System.out.println("Warrior special skill: Shield");
     }
 }

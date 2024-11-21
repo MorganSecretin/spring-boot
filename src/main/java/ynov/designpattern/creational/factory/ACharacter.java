@@ -4,13 +4,11 @@ public abstract class ACharacter {
     private String name;
     private int health;
     private int attack;
-    private String[] specialSkills;
 
-    public ACharacter(String name, int health, int attack, String[] specialSkills) {
+    public ACharacter(String name, int health, int attack) {
         this.name = name;
         this.health = health;
         this.attack = attack;
-        this.specialSkills = specialSkills;
     }
 
     public String getName() {
@@ -23,13 +21,9 @@ public abstract class ACharacter {
         return attack;
     }
     
-    public void useSpecialSkills() {
-        for (String skill : specialSkills) {
-            System.out.println(skill);
-        }
-    }
+    public abstract void useSpecialSkills();
 
     public void displayCharacter() {
-        System.out.println(name + ", Attack: " + attack + ", Health: " + health + ", Skills: " + String.join(", ", specialSkills));
+        System.out.println(name + ", Attack: " + attack + ", Health: " + health);
     }
 }
