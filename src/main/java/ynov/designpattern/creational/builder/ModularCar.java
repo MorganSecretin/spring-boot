@@ -12,12 +12,6 @@ public class ModularCar {
 
     private ModularCar(ECarModel model, EEngineType engineType, int nbSeats, String color, List<String> options) {
         this.model = model;
-        if (model == ECarModel.SPORT && engineType == EEngineType.ELECTRIQUE) {
-            throw new IllegalArgumentException("Sport car can't have electric engine");
-        }
-        if (model == ECarModel.SUV && nbSeats < 5) {
-            throw new IllegalArgumentException("SUV car must have at least 5 seats");
-        }
         this.engineType = engineType;
         this.nbSeats = nbSeats;
         this.color = color;
@@ -32,6 +26,12 @@ public class ModularCar {
         private List<String> options;
 
         public Builder(ECarModel model, EEngineType engineType, int nbSeats) {
+            if (model == ECarModel.SPORT && engineType == EEngineType.ELECTRIQUE) {
+                throw new IllegalArgumentException("Sport car can't have electric engine");
+            }
+            if (model == ECarModel.SUV && nbSeats < 5) {
+                throw new IllegalArgumentException("SUV car must have at least 5 seats");
+            }
             this.model = model;
             this.engineType = engineType;
             this.nbSeats = nbSeats;
